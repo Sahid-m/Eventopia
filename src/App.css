@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@300;400&family=Source+Sans+3:wght@700&display=swap');
+
+*{
+    margin: 0;
+  }
+
+.pagemargin {
+  margin-top: 70px;
+}
+
+.home-bg{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-head{
+    color: #000;
+    text-align: center;
+    font-family: M PLUS 2;
+    font-style: normal;
+    font-weight: 400;
+    line-height:normal;
+    letter-spacing: 10px;
+}
+
+.home-btn{
+  width: 10rem;
+  
+  margin-top: 10px;
+  border-radius: 0;
+  color: #000;
+  font-weight: 500;
+  border: 3px solid green;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}
+
+.home-btn:hover{
+  background-color: #57835c;
+  color: white;
+}
+
+
+  .pixelfont {
+    font-family: 'M PLUS 1 Code', monospace;
+    
+    font-weight:600;
+    color: #000000;
+
+  }
+
+  .bg-nav{
+    background-color: #57835c;
+  }
+
+  .actv {
+
+    color:rgb(255, 255, 255);
+    border-color: white;
+  }
+
+  @media screen and (max-width: 990px) {
+    .navbar-collapse {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in-out;
+
+    }
+
+    .navbar-collapse.show {
+      max-height: 500px;
+
+    }
+
+
+    .navbar-toggler {
+      transition: transform 0.5s ease-in-out;
+
+    }
+ }
+
+ .c-white{
+  color: white;
+ }
+
+ .w-55{
+  width: 55%;
+ }
