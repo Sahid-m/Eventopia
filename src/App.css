@@ -54,6 +54,21 @@
     color: #000000;
 
   }
+  .e-card{
+    transition: box-shadow 0.3s ease;
+    border-radius: 15px;
+    background-color: rgba(236, 236, 236, 0.428);
+  }
+
+  .e-card:hover{
+    box-shadow: 0 0 5px 4px  rgb(125, 125, 125, 0.3) ;
+  }
+
+  .e-img{
+    width: 100%;
+    height: auto;
+  }
+
 
   .bg-nav{
     background-color: #57835c;
