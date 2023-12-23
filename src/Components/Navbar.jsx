@@ -1,10 +1,12 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import '../App.css';
 
 const Navigation = () => {
   const location = useLocation();
   const [isNavOpen, setNavOpen] = useState(false);
+
 
   const isActiveLink = (pathname) => {
     return pathname === location.pathname ? "actv" : "";
@@ -16,6 +18,26 @@ const Navigation = () => {
   const handleNavItemClick = () => {
     setNavOpen(false);
   };
+
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken'));
+
+useEffect(() => {
+  const handleLogin = () => {
+    setIsLoggedIn(!!localStorage.getItem('authToken'));
+  };
+
+  // Listen for changes in local storage
+  window.addEventListener('storage', handleLogin);
+
+  
+}, []);
+
+const handleLogout = () => {
+  // Perform logout actions (e.g., clearing localStorage, API requests, etc.)
+  localStorage.removeItem('authToken');
+  setIsLoggedIn(!!localStorage.getItem('authToken'));
+};
+
 
   return (
     <nav
@@ -84,12 +106,50 @@ const Navigation = () => {
                 to="/contact">
                 Contact
               </Link>
-            </li>   
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={handleNavItemClick}
+                className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
+                  "/signup"
+                )}`}
+                to="/signup">
+                Signup
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={handleNavItemClick}
+                className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
+                  "/login"
+                )}`}
+                to="/login">
+                Login
+              </Link>
+            </li>
+            {isLoggedIn === true && ( 
+                   <>
+                  <li className="nav-item">
+                  <Link
+                    onClick={handleLogout}
+                    className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
+                      "/"
+                    )}`}
+                  to="/">
+                  Logout
+                  </Link>
+                </li>
+                </>
+            )}
+            
             </ul> 
         </div>
       </div>
     </nav>
   );
 };
+
+
+
 
 export default Navigation;

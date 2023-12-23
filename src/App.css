@@ -70,6 +70,22 @@
   }
 
 
+  .form-signup{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+  }
+
+  .btn-green{
+    background-color: #57835c;
+    color: white;
+    font-size: 1.2rem;
+  }
+  .btn-green:hover{
+    background-color: white;
+    border: 3px solid #57835c;
+  }
+
   .bg-nav{
     background-color: #57835c;
   }

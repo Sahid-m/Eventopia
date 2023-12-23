@@ -8,8 +8,13 @@ export default function Events() {
   const [events, setEvents] = useState([]);
 
   const fetchevent = async () => {
+
+    
+
     try {
-      const response = await fetch('http://192.168.216.165:8080/get-events', { method: 'GET' })
+      const response = await fetch('http://localhost:8080/get-events', { method: 'GET' , headers: {
+    'Bypass-Tunnel-Reminder': "anything" 
+    }  })
       
       if (!response.ok) {
         throw new Error("Network Error Couldnt fetch request")
