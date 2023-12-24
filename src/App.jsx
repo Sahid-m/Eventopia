@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import './App.css';
 import Navbar from './Components/Navbar';
@@ -10,14 +11,38 @@ import LoginPage from "./Pages/LoginPage";
 import Signup from "./Pages/Signup";
 
 
+
 function App() {
   
+
+
+      const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken'));
+
+  const checkStorage = () => {
+      const handleLogin = () => {
+      setIsLoggedIn(!!localStorage.getItem('authToken'));
+      };
+
+  // Listen for changes in local storage
+  window.addEventListener('storage', handleLogin);
+
+    }
+  
+  useEffect(() => {
+  
+    
+    checkStorage();
+
+  
+  }, []);
+  
+  checkStorage();
 
 
   return (
     <>
       <Router > 
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn}/>
         <Routes>
           <Route exact path="/" Component={HomePage} />
           <Route exact path="/contact" Component={Contact} />

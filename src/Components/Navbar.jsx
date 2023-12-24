@@ -1,9 +1,10 @@
 
-import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import '../App.css';
 
-const Navigation = () => {
+const Navigation = (props) => {
   const location = useLocation();
   const [isNavOpen, setNavOpen] = useState(false);
 
@@ -19,23 +20,11 @@ const Navigation = () => {
     setNavOpen(false);
   };
 
-    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken'));
 
-useEffect(() => {
-  const handleLogin = () => {
-    setIsLoggedIn(!!localStorage.getItem('authToken'));
-  };
-
-  // Listen for changes in local storage
-  window.addEventListener('storage', handleLogin);
-
-  
-}, []);
 
 const handleLogout = () => {
   // Perform logout actions (e.g., clearing localStorage, API requests, etc.)
   localStorage.removeItem('authToken');
-  setIsLoggedIn(!!localStorage.getItem('authToken'));
 };
 
 
@@ -127,7 +116,7 @@ const handleLogout = () => {
                 Login
               </Link>
             </li>
-            {isLoggedIn === true && ( 
+            {props.isLoggedIn === true && ( 
                    <>
                   <li className="nav-item">
                   <Link
@@ -149,7 +138,9 @@ const handleLogout = () => {
   );
 };
 
-
+Navigation.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired
+};
 
 
 export default Navigation;
