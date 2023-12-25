@@ -1,6 +1,4 @@
-
-
-export default function LoginPage() {
+export default function LoginPage({handleLogin}) {
 
     const formData = new FormData();
 
@@ -32,6 +30,7 @@ export default function LoginPage() {
                 alert(data.message);
                 if (data.token) {
                     localStorage.setItem('authToken', data.token);
+                    handleLogin();
                     alert("You've Successfully Logged in and no need to login again for next 24h")
                 }
             }
