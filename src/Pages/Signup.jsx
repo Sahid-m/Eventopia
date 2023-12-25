@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 
+Signup.propTypes = {
+    handleLogin: PropTypes.func.isRequired,
+  };  
 
-
-export default function Signup() {
+export default function Signup( {handleLogin}) {
 
     const formData = new FormData();
-
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         
@@ -35,6 +36,7 @@ export default function Signup() {
           alert(data.message);
           if (data.token) {
               localStorage.setItem('authToken', data.token);
+              handleLogin();
               alert("You're good to go! No need to login again for 24hours");
           }
       }

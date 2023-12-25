@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import '../App.css';
 
+
 const Navigation = (props) => {
   const location = useLocation();
   const [isNavOpen, setNavOpen] = useState(false);
@@ -25,6 +26,7 @@ const Navigation = (props) => {
 const handleLogout = () => {
   // Perform logout actions (e.g., clearing localStorage, API requests, etc.)
   localStorage.removeItem('authToken');
+  props.handleLogin();
 };
 
 
@@ -56,6 +58,7 @@ const handleLogout = () => {
           }`}
           id="navbarSupportedContent">
           <ul className="navbar-nav w-55 justify-content-between d-flex ">
+
             <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
@@ -66,6 +69,7 @@ const handleLogout = () => {
                 Home
               </Link>
             </li>
+
              <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
@@ -76,6 +80,7 @@ const handleLogout = () => {
                 Events
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
@@ -86,6 +91,7 @@ const handleLogout = () => {
                 About
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
@@ -96,6 +102,9 @@ const handleLogout = () => {
                 Contact
               </Link>
             </li>
+
+            { !props.isLoggedIn ?
+            (<>
             <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
@@ -106,6 +115,7 @@ const handleLogout = () => {
                 Signup
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
@@ -116,9 +126,12 @@ const handleLogout = () => {
                 Login
               </Link>
             </li>
-            {props.isLoggedIn === true && ( 
-                   <>
-                  <li className="nav-item">
+            </>
+            ) :
+
+            ( 
+              <>
+              <li className="nav-item">
                   <Link
                     onClick={handleLogout}
                     className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
@@ -127,8 +140,8 @@ const handleLogout = () => {
                   to="/">
                   Logout
                   </Link>
-                </li>
-                </>
+              </li>
+              </>
             )}
             
             </ul> 
@@ -139,8 +152,8 @@ const handleLogout = () => {
 };
 
 Navigation.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  handleLogin: PropTypes.func.isRequired,
 };
-
 
 export default Navigation;

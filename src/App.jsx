@@ -23,17 +23,16 @@ function App() {
   return (
     <>
       <Router > 
-        <Navbar isLoggedIn={isLoggedIn}/>
+        <Navbar isLoggedIn={isLoggedIn} handleLogin = {handleLogin}/>
         <Routes>
-          <Route exact path="/" Component={<HomePage/>} />
-          <Route exact path="/contact" Component={<Contact/>} />
-          <Route exact path="/events" Component={<Events/>} />
-          <Route exact path="/about" Component={<AboutUs/>} />
-          <Route exact path="/signup" element={<Signup/>} />
+          <Route exact path="/" element={<HomePage/>} />
+          <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/events" element={<Events/>} />
+          <Route exact path="/about" element={<AboutUs/>} />
+          <Route exact path="/signup" element={<Signup handleLogin={handleLogin}/>} />
           <Route exact path="/login" element={<LoginPage handleLogin={handleLogin} />} />
         </Routes>      
-      </Router>
-      
+      </Router>  
     </>
   )
 }
