@@ -1,6 +1,11 @@
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
+export default function LoginPage(props) {
 
-export default function LoginPage() {
+    LoginPage.propTypes = {
+        handleLogin: PropTypes.func.isRequired,
+    };
 
     const formData = new FormData();
 
@@ -33,6 +38,7 @@ export default function LoginPage() {
                 if (data.token) {
                     localStorage.setItem('authToken', data.token);
                     alert("You've Successfully Logged in and no need to login again for next 24h")
+                    props.handleLogin();
                 }
             }
             
@@ -47,6 +53,10 @@ export default function LoginPage() {
         const { name, value } = e.target;
         formData.set(name,value)
     };
+
+    useEffect(() => {
+    props.handleLogin();
+  }, [props])
 
 
 

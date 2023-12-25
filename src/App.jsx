@@ -18,25 +18,19 @@ function App() {
 
       const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken'));
 
-  const checkStorage = () => {
-      const handleLogin = () => {
+  
+    const handleLogin = () => {
       setIsLoggedIn(!!localStorage.getItem('authToken'));
-      };
-
-  // Listen for changes in local storage
-  window.addEventListener('storage', handleLogin);
-
     }
   
   useEffect(() => {
   
     
-    checkStorage();
-
+    handleLogin();
   
   }, []);
   
-  checkStorage();
+
 
 
   return (
@@ -44,12 +38,12 @@ function App() {
       <Router > 
         <Navbar isLoggedIn={isLoggedIn}/>
         <Routes>
-          <Route exact path="/" Component={HomePage} />
-          <Route exact path="/contact" Component={Contact} />
-          <Route exact path="/events" Component={Events} />
-          <Route exact path="/about" Component={AboutUs} />
-          <Route exact path="/signup" Component={Signup} />
-          <Route exact path="/login" Component={LoginPage} />
+          <Route exact path="/" element={<HomePage handleLogin={handleLogin} />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/events" element={<Events />} />
+          <Route exact path="/about" element={<AboutUs />} />
+          <Route exact path="/signup" element={<Signup handleLogin={handleLogin}/>} />
+          <Route exact path="/login" element={<LoginPage handleLogin={handleLogin}/>}  />
         </Routes>      
       </Router>
       

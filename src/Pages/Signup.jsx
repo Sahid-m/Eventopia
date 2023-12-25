@@ -1,7 +1,12 @@
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 
+export default function Signup(props) {
 
-export default function Signup() {
+  Signup.propTypes = {
+    handleLogin: PropTypes.func.isRequired, 
+  }
 
     const formData = new FormData();
 
@@ -35,7 +40,8 @@ export default function Signup() {
           alert(data.message);
           if (data.token) {
               localStorage.setItem('authToken', data.token);
-              alert("You're good to go! No need to login again for 24hours");
+            alert("You're good to go! No need to login again for 24hours");
+            
           }
       }
 
@@ -52,6 +58,12 @@ export default function Signup() {
     const { name, value } = event.target;
     formData.set(name, value);
   };
+
+  
+
+  useEffect(() => {
+    props.handleLogin();
+  }, [props])
 
     return (
       
@@ -85,3 +97,5 @@ export default function Signup() {
     </div>
   )
 }
+
+

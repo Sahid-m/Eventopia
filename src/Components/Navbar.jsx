@@ -96,7 +96,9 @@ const handleLogout = () => {
                 Contact
               </Link>
             </li>
-            <li className="nav-item">
+            {props.isLoggedIn === false && (
+              <>
+              <li className="nav-item">
               <Link
                 onClick={handleNavItemClick}
                 className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
@@ -116,6 +118,9 @@ const handleLogout = () => {
                 Login
               </Link>
             </li>
+              </>
+            )}
+            
             {props.isLoggedIn === true && ( 
                    <>
                   <li className="nav-item">
