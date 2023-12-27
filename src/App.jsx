@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import './App.css';
 import Navbar from './Components/Navbar';
 import AboutUs from "./Pages/AboutUs";
+import AdminPage from './Pages/AdminPage';
 import Contact from "./Pages/Contact";
 import Events from "./Pages/Events";
 import HomePage from './Pages/HomePage';
@@ -44,6 +45,7 @@ function App() {
           <Route exact path="/about" element={<AboutUs />} />
           <Route exact path="/signup" element={<Signup handleLogin={handleLogin}/>} />
           <Route exact path="/login" element={<LoginPage handleLogin={handleLogin}/>}  />
+          <Route exact path="/admin" element={<AdminPage/>}  />
         </Routes>      
       </Router>
       

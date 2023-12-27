@@ -6,10 +6,11 @@ import EventCard from "../Components/EventCard";
 export default function Events() {
 
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchevent = async () => {
 
-    
 
     try {
       const response = await fetch('http://localhost:8080/get-events', { method: 'GET' , headers: {
@@ -17,14 +18,24 @@ export default function Events() {
     }  })
       
       if (!response.ok) {
-        throw new Error("Network Error Couldnt fetch request")
+        throw new Error("Network Error Couldnt fetch data")
       }
 
       const data = await response.json();
 
       setEvents(data);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      
+        if (error.name === 'AbortError') {
+          console.error('Fetch aborted:', error);
+          setError(error)
+        } else
+        {
+          console.error('Error fetching data:', error);
+          setError(error); // Set the error state
+        }
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -47,10 +58,14 @@ export default function Events() {
   return (
     <div className="pagemargin e-bg">
           
-      {events.map((eventobj) => {
+      {loading ?
+        (<div> <span className="home-bg" > Loading... </span> </div>)
+        : error ? (
+          <h1 className="home-bg">Error : {error.msg}</h1>
+        ) : (events.map((eventobj) => {
         console.log(eventobj);
         return <EventCard key={eventobj._id} eventobj={eventobj} />
-      })}
+      }))}
 
           
     </div>

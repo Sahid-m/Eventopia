@@ -123,7 +123,7 @@ const handleLogout = () => {
             
             {props.isLoggedIn === true && ( 
                    <>
-                  <li className="nav-item">
+                <li className="nav-item">
                   <Link
                     onClick={handleLogout}
                     className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
@@ -133,6 +133,17 @@ const handleLogout = () => {
                   Logout
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link
+                    
+                    className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
+                      "/admin"
+                    )}`}
+                  to="/admin">
+                  AdminPage
+                  </Link>
+                </li>
+
                 </>
             )}
             

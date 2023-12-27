@@ -138,6 +138,11 @@
     width: 100%;
   }
 
+  .about-text-text{
+    justify-content: center;
+    
+  }
+
     @media (max-width: 768px) {
   
 
