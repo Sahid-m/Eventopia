@@ -20,6 +20,14 @@ export default function Signup(props) {
         if (isTokenalr) {
             alert("already Logged In");
             return;
+      }
+      
+      const emailInput = formData.get('email');
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(emailInput)) {
+          alert("Invalid email format");
+          return;
         }
 
     try {
@@ -41,6 +49,7 @@ export default function Signup(props) {
           if (data.token) {
               localStorage.setItem('authToken', data.token);
             alert("You're good to go! No need to login again for 24hours");
+            props.handleLogin();
             
           }
       }
@@ -55,9 +64,11 @@ export default function Signup(props) {
   };
     
     const handleChange = (event) => {
-    const { name, value } = event.target;
-    formData.set(name, value);
-  };
+  const { name, value } = event.target;
+  formData.set(name, value);
+
+};
+
 
   
 
@@ -81,7 +92,7 @@ export default function Signup(props) {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Email address</label>
-                    <input onChange={handleChange} type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                    <input onChange={handleChange} type="email" name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" title='Enter a valid Email' required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>

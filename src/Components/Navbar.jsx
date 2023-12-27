@@ -122,7 +122,18 @@ const handleLogout = () => {
             )}
             
             {props.isLoggedIn === true && ( 
-                   <>
+              <>
+                
+                <li className="nav-item">
+                  <Link
+                    
+                    className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
+                      "/admin"
+                    )}`}
+                  to="/admin">
+                  PostEvent
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <Link
                     onClick={handleLogout}
@@ -133,16 +144,7 @@ const handleLogout = () => {
                   Logout
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link
-                    
-                    className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
-                      "/admin"
-                    )}`}
-                  to="/admin">
-                  AdminPage
-                  </Link>
-                </li>
+                
 
                 </>
             )}

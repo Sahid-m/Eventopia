@@ -115,11 +115,20 @@
 
   .about-textbg{
     height: 100%;
-    background-color:aliceblue;
+    background-color:#77A67C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
   }
   .about-textbg1{
     height: 100%;
+    background-color: #dbdedb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    margin-left: 20px;
   }
 
     .about-textbg,
@@ -140,7 +149,19 @@
 
   .about-text-text{
     justify-content: center;
+    align-items: center;
+    font-family: 'M PLUS 1 Code', monospace;
+    font-weight: 600;
+    color: white;
+    font-size: 1.5rem;
     
+  }
+
+  .about-text-info {
+      font-family: 'M PLUS 1 Code', monospace;
+      font-weight: 600;
+      color: black;
+      font-size: 1.5rem;
   }
 
     @media (max-width: 768px) {
@@ -151,6 +172,18 @@
     width: 50%;
      /* Adjust the width for smaller screens */
   }
+
+  .about-text-text{
+    font-size: 0.75rem;
+  }
+  .about-textbg1{
+    height: 75%;
+  }
+  .about-text-info{
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
 }
 
   .bg-nav{
