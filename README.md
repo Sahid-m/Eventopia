@@ -1,8 +1,11 @@
-# React + Vite
+# Eventopia 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What it is ? 
 
-Currently, two official plugins are available:
+Eventopia is a Website that lets you view all the ongoing events in university / city and add them directly to your calendar so that you dont forget about it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It also lets any user publish his events to the DB and lets everyone see and add it.
+
+## How to Setup this locally 
+
+Right Now its front end is only open source and the backend server is not opened as im currently working and i wouldnt want anyone to copy it.
