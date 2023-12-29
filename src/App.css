@@ -123,7 +123,7 @@
   }
   .about-textbg1{
     height: 100%;
-    background-color: #dbdedb;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,7 +152,7 @@
     align-items: center;
     font-family: 'M PLUS 1 Code', monospace;
     font-weight: 600;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1.5rem;
     
   }
@@ -222,4 +222,41 @@
 
  .w-55{
   width: 55%;
+ }
+
+ .admin-nav{
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .admin-nav-head{
+  font-family: 'M PLUS 1 Code', monospace;
+  font-weight: 700;
+  align-self: center;
+  padding: 10px;
+ }
+
+ .admin-nav-btn{
+  background-color: #57835c;
+  padding: 10px;
+  align-self: center;
+  width: 10rem;
+  color: white;
+ }
+
+ .admin-nav-btn:hover
+ {
+  border: 3px solid #57835c;
+ }
+ 
+
+ .md-footer{
+  justify-content: space-between;
+  flex-direction: row;
+ }
+
+ .w-30{
+  width: 45%;
  }

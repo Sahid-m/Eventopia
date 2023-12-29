@@ -9,14 +9,13 @@ export default function AdminPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [logged, setLogged] = useState(false);
 
 
   const auth = async () => {
     try {
 
       let authTokenf = localStorage.getItem("authToken");
-
-      if(!auth){throw new Error("Please Login")}
       
       const response = await fetch('http://localhost:8080/auth', {
         method: 'GET', headers: {
@@ -32,10 +31,13 @@ export default function AdminPage() {
 
       console.log(data);
 
+      if (data.message != "ok") {
+        throw new Error("Token Not Valid. Please Login Again")
+      }
+
       setUsername(data.username);
       setEmail(data.email);
       setName(data.name);
-      
       
 
     } catch (e) {
@@ -47,16 +49,23 @@ export default function AdminPage() {
 
 
   useEffect(() => {
+    let authTokenf = localStorage.getItem("authToken");
+    if (!authTokenf) { setLogged(false) }
+    else {
+      setLogged(true)
+    }
     auth()
-  })
+  }, [])
 
 
   return (
     <div className="pagemargin">
-      {loading ? (<h1 className="home-bg">Loading...</h1>)
+      {!logged ? (<h1 className="home-bg">Please Login, Youre not Logged in </h1>)
+        : 
+        loading ? (<h1 className="home-bg">Loading...</h1>)
         :
         err ? (
-        <h1 className="home-bg"> Error: {err} </h1>
+        <h1 className="home-bg"> Error: {err.message} </h1>
       ) : (
           <Admin name={name} email={email} username={username}/>
       )}
