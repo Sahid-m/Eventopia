@@ -4,7 +4,7 @@ import '../App.css';
 
 export default function EventCard(props) {
 
-    const { img, heading, description, dandt, place , startDate , startTime , endDate , endTime } = props.eventobj;
+    const { img, heading, description, place , startDate , startTime  , endTime,user } = props.eventobj;
 
   return (
     <div>
@@ -14,17 +14,16 @@ export default function EventCard(props) {
                       <img src={img} className=" e-img img-fluid rounded-start" alt="Event-img" />
                 </div>
                 <div className="col-md-8">
-                    <div className="card-body">
-                        <h5 className="card-title pixelfont">{heading}</h5>
-                        <p className="card-text pixelfont fw-normal">{description}</p>
-                          <p className="card-text pixelfont fw-light">{dandt}</p>
+                      <div className="card-body">
+                          <h5 className="card-title pixelfont">{heading}</h5>
+                          <p className="card-text pixelfont fw-normal">{description}</p>
+                          <h5 className="card-title pixelfont">By @<span className='text-primary'>{user}</span></h5>
                           <p className="card-text pixelfont fw-light">{place}</p>
                           <AddToCalendarButton
                               name={heading}
                                 location={place}
                                 description={description}
                               startDate={startDate}
-                              endDate={endDate}
                               startTime={startTime}
                               endTime={endTime}
                                 options={['Apple','Google','Yahoo','iCal']}
@@ -47,11 +46,10 @@ EventCard.propTypes = {
         img: PropTypes.any.isRequired,
         heading: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-        dandt: PropTypes.string.isRequired,
         place: PropTypes.string.isRequired,
         startDate: PropTypes.any.isRequired,
         startTime: PropTypes.string.isRequired,
-        endDate: PropTypes.any.isRequired,
-        endTime: PropTypes.string.isRequired
+        endTime: PropTypes.string.isRequired,
+        user: PropTypes.string.isRequired,
     }).isRequired,
 };

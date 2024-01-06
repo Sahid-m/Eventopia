@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import Admin from "../Components/Admin";
+import api_url from "../Components/url";
 
 export default function AdminPage() {
 
@@ -13,11 +14,13 @@ export default function AdminPage() {
 
 
   const auth = async () => {
+
+    let endpoint = "/auth";
     try {
 
       let authTokenf = localStorage.getItem("authToken");
       
-      const response = await fetch('http://localhost:8080/auth', {
+      const response = await fetch(api_url + endpoint, {
         method: 'GET', headers: {
           Authorization: authTokenf,
         },

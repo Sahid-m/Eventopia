@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import api_url from '../Components/url';
 
 export default function LoginPage(props) {
 
@@ -20,8 +21,12 @@ export default function LoginPage(props) {
             return;
         }
 
+        console.log(formData);
+
+        let endpoint = "/login";
+
         try {
-            const response = await fetch('http://localhost:8080/login',
+            const response = await fetch(api_url + endpoint,
                 {
                     method: 'POST',
                     headers: { 'Bypass-Tunnel-Reminder': "anything" },

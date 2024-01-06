@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import api_url from '../Components/url';
 
 
 export default function Signup(props) {
@@ -28,10 +29,12 @@ export default function Signup(props) {
         if (!emailRegex.test(emailInput)) {
           alert("Invalid email format");
           return;
-        }
+      }
+      
+      let endpoint = "/signup"
 
     try {
-      const response = await fetch('http://localhost:8080/signup', {
+      const response = await fetch(api_url + endpoint, {
         method: 'POST',
         headers: {
           'Bypass-Tunnel-Reminder': "anything"

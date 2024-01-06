@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
 import EventCard from "../Components/EventCard";
+import ToggleButton from "../Components/FilteredButtons";
+import api_url from "../Components/url";
 
 
 export default function Events() {
@@ -8,12 +10,15 @@ export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+
 
   const fetchevent = async () => {
 
-
+    const endpoint = "/get-events"
+    
     try {
-      const response = await fetch('http://localhost:8080/get-events', { method: 'GET' , headers: {
+      const response = await fetch(api_url + endpoint, { method: 'GET' , headers: {
     'Bypass-Tunnel-Reminder': "anything" 
     }  })
       
@@ -38,20 +43,51 @@ export default function Events() {
       setLoading(false);
     }
   }
+  
+    useEffect(() => {
+      fetchevent();
+    }, []);
+  
+  const today = new Date().toISOString().split('T')[0];
+  
+  const getFilteredEvents = () => {
+  if (events.length === 0) {
+    return [];
+  }
+
+  // Filter events with startDate after today
+     let data = events.filter((event) => {
+       const eventStartDate = new Date(event.startDate).toISOString().split('T')[0];
+       return eventStartDate > today;
+     }
+     );
+
+     setFilteredEvents(data);
+
+     console.log(filteredEvents);
+  };
+
+  const getAllEvents = () => {
+    if (events.length === 0) {
+    return [];
+    }
+    
+    setFilteredEvents(events);
+  }
+
+
 
   useEffect(() => {
-    fetchevent();
-  }, []);
+    getFilteredEvents();
+  },[events])
 
     // const eventdetails = {
     //     img: 'https://placehold.co/1280x720',
     //     heading: "Sample Heading",
     //     description: "Sample Desc",
-    //     dandt: "Date and Time",
-    //   place: "Place",
-    //   startDate: '2023-12-22',
-    //   startTime: '10:00',
-    //   endDate: '2023-12-22',
+    //     place: "Place",
+    //     startDate: '2023-12-22',
+    //     startTime: '10:00',
     //     endTime: '12:00'
     // }
 
@@ -62,10 +98,16 @@ export default function Events() {
         (<div> <span className="home-bg" > Loading... </span> </div>)
         : error ? (
           <h1 className="home-bg">Error : {error.msg}</h1>
-        ) : (events.map((eventobj) => {
-        console.log(eventobj);
-        return <EventCard key={eventobj._id} eventobj={eventobj} />
-      }))}
+        ) : (
+            <div className="">
+              
+                
+                <ToggleButton allEvents={getAllEvents} currentEvents={getFilteredEvents}   />
+              
+              {filteredEvents.map((eventobj) => {
+                  return <EventCard key={eventobj._id} eventobj={eventobj} />
+              })}
+          </div>)}
 
           
     </div>
