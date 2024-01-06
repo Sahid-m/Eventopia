@@ -63,8 +63,6 @@ export default function Events() {
      );
 
      setFilteredEvents(data);
-
-     console.log(filteredEvents);
   };
 
   const getAllEvents = () => {

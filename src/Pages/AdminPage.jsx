@@ -32,8 +32,6 @@ export default function AdminPage() {
 
       const data = await response.json();
 
-      console.log(data);
-
       if (data.message != "ok") {
         throw new Error("Token Not Valid. Please Login Again")
       }

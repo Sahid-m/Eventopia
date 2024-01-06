@@ -57,7 +57,6 @@ export default function YourPosts() {
           <h1 className="home-bg">Error : {error.msg}</h1>
         ) : Array.isArray(events)
         ? (events.map((eventobj) => {
-        console.log(eventobj);
         return <EventCard key={eventobj._id} eventobj={eventobj} />
       }))
         : (

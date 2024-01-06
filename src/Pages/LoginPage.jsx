@@ -21,8 +21,6 @@ export default function LoginPage(props) {
             return;
         }
 
-        console.log(formData);
-
         let endpoint = "/login";
 
         try {
@@ -35,7 +33,6 @@ export default function LoginPage(props) {
             
             if (!response.ok) {
                 const errmessage = await response.json();
-                console.log(errmessage);
                 throw new Error(errmessage.message || 'API request failed');
             } else {
                 const data = await response.json();

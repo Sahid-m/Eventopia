@@ -5,7 +5,6 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import AboutUs from "./Pages/AboutUs";
 import AdminPage from './Pages/AdminPage';
-import Contact from "./Pages/Contact";
 import Events from "./Pages/Events";
 import HomePage from './Pages/HomePage';
 import LoginPage from "./Pages/LoginPage";
@@ -40,7 +39,6 @@ function App() {
         <Navbar isLoggedIn={isLoggedIn}/>
         <Routes>
           <Route exact path="/" element={<HomePage handleLogin={handleLogin} />} />
-          <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/events" element={<Events />} />
           <Route exact path="/about" element={<AboutUs />} />
           <Route exact path="/signup" element={<Signup handleLogin={handleLogin}/>} />
