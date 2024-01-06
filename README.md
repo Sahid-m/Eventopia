@@ -10,4 +10,4 @@ It also lets any user publish his events to the DB and lets everyone see and add
 
 Ths is a Frontend repo only You can go to url below to see the Backend Of it and how to setup this project locally :
 
-`https://github.com/Sahid-m/Eventopia-fullstack`
+https://github.com/Sahid-m/Eventopia-fullstack
