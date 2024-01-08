@@ -10,7 +10,6 @@ export default function AddEventForm({ updateFormData }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         updateFormData(name,value);
-
     }
     
     // useEffect(() => {

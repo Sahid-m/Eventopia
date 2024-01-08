@@ -15,6 +15,12 @@
   align-items: center;
 }
 
+.editwrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .e-filter{
   padding: 5px;
   margin-left: 5px;
