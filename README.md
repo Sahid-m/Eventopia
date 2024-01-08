@@ -1,12 +1,14 @@
-# Eventopia 
+# Eventopia
 
-## What it is ? 
+## What it is ?
 
 Eventopia is a Website that lets you view all the ongoing events in university / city and add them directly to your calendar so that you dont forget about it.
 
 It also lets any user publish his events to the DB and lets everyone see and add it.
 
-## How To Setup 
+User Can edit and delete thier Event through their Admin Pannel
+
+## How To Setup
 
 Ths is a Frontend repo only You can go to url below to see the Backend Of it and how to setup this project locally :
 
