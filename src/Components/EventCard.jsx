@@ -56,12 +56,39 @@ export default function EventCard(props) {
     setInEdit(!inEdit);
   }
 
-  const handleDelete = () => {
+  const handleDelete = async() => {
 
     const isConfirmed = window.confirm('Are you sure you want to delete this event?');
 
     if (isConfirmed) {
-      console.log("Deleted Evennt")
+      let authToken = localStorage.getItem("authToken");
+
+      let endpoint = "/delete"
+
+      try {
+        const response = await fetch(api_url + endpoint, {
+        method: "DELETE",
+        headers: {
+          authorization: authToken,
+          id: _id
+        }
+      });
+
+        if (!response.ok) {
+          throw new Error("Fetch Request Error");
+        }else{
+          const data = await response.json();
+
+          alert(data.message);
+
+          if (data.message === "Event deleted successfully") {
+          window.location.reload();
+        }
+        }  
+      } catch (error) {
+        alert("We Got Some Error: " + error.message);
+      }
+      
     }
   }
 
