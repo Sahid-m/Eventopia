@@ -36,6 +36,10 @@
   background-color: rgb(85, 85, 227);
   color: white;
 }
+
+.selected-img{
+  border: 3px solid blue;
+}
 .home-bg{
   height: 100vh;
   width: 100%;

@@ -1,21 +1,36 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import SelctImage from './SelctImage';
 // import { useEffect } from "react";
 
 export default function AddEventForm({ updateFormData }) {
+
+    const [imageURL, setImageURL] = useState(true)
+    const [imageURLvalue, setImageURLvalue] = useState("");
 
     AddEventForm.propTypes = {
         updateFormData: PropTypes.func,
     }
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name , value } = e.target;
         updateFormData(name,value);
     }
-    
-    // useEffect(() => {
-    //     updateFormData(formData);
 
-    // },)
+    const handleImageChange = (e) => {
+        setImageURLvalue(e.target.value);
+        const { name } = e.target;
+        updateFormData(name,imageURLvalue)
+    }
+
+    const handleImageURL = () => {
+        setImageURL(!imageURL)
+    }
+
+    const setInputImage = (url) => {
+        setImageURLvalue(url);
+    }
+    
     
 
     return (
@@ -66,13 +81,33 @@ export default function AddEventForm({ updateFormData }) {
                 <div className="mb-3">
                     <label className="form-label">Image URL: </label>
                     <input
-                        onChange={handleChange}
+                        onChange={handleImageChange}
                         type="text"
                         className="form-control"
                         name="img"
+                        value={imageURLvalue}
                         required
+                        disabled={imageURL}
                     />
                 </div>
+                {imageURL ? <div className="mb-3">
+                                        <button className='btn btn-primary form-control'type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" > Add Image </button>
+                                        <SelctImage updateImgeFnc={setInputImage} />
+                           </div>
+                    :
+                <></>
+                }
+                
+                <div className="mb-3">
+                        <label htmlFor="" className="form-label"> Set Custom Image URL: 
+                        </label>
+                    <input
+                        className=''
+                        type="checkbox"
+                        checked={!imageURL}
+                        onChange={handleImageURL}
+                    />
+                    </div>
             </form>
         </div>
     );
