@@ -7,6 +7,8 @@ export default function AddPostsModal() {
   
   const Submit = async (event) => {
     event.preventDefault();
+
+    console.log(formData)
     let token = localStorage.getItem("authToken");
     if (!token) {
       alert("Youre Not Logged in Please Login");

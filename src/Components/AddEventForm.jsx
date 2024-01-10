@@ -19,6 +19,7 @@ export default function AddEventForm({ updateFormData }) {
 
     const handleImageChange = (e) => {
         setImageURLvalue(e.target.value);
+        console.log("Image Changed")
         const { name } = e.target;
         updateFormData(name,imageURLvalue)
     }
@@ -29,6 +30,7 @@ export default function AddEventForm({ updateFormData }) {
 
     const setInputImage = (url) => {
         setImageURLvalue(url);
+        handleImageChange({ target: { value: url , name: "img" } })
     }
     
     
