@@ -15,7 +15,8 @@ export default function EventCard(props) {
     place:  place,
     startDate: startDate ,
     startTime: startTime,
-    endTime: endTime
+    endTime: endTime,
+    img: img
   })
 
   const SubmitEvent = async () => {
@@ -121,6 +122,8 @@ export default function EventCard(props) {
                   <input className="card-text pixelfont form-control" type='date' name='startDate' value={inputs.startDate} onChange={(e) => handleChange('startDate' , e)} />
                   <input className="card-text pixelfont form-control" type='time' name='startTime' value={inputs.startTime} onChange={(e) => handleChange('startTime' , e)} />
                   <input className="card-text pixelfont form-control" type='time' name='endTime' value={inputs.endTime} onChange={(e) => handleChange('endTime' , e)} />
+                  <input className="card-text pixelfont form-control" type='text' name='img' value={inputs.img} onChange={(e) => handleChange('img' , e)} />
+                
                 <div className="editwrapper my-2">
                 <button className='btn text-center btn-primary' onClick={SubmitEvent} > Update Event </button>
                 <button className='btn text-center btn-success' onClick={handleEdit}> Turn Off Edit </button>

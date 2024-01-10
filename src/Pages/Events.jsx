@@ -103,7 +103,7 @@ export default function Events() {
                 <ToggleButton allEvents={getAllEvents} currentEvents={getFilteredEvents}   />
               
               {filteredEvents.map((eventobj) => {
-                  return <EventCard key={eventobj._id} eventobj={eventobj} />
+                  return <EventCard key={eventobj._id} eventobj={eventobj} canEdit={false} />
               })}
           </div>)}
 
