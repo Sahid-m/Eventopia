@@ -25,6 +25,7 @@ const Navigation = (props) => {
 const handleLogout = () => {
   // Perform logout actions (e.g., clearing localStorage, API requests, etc.)
   localStorage.removeItem('authToken');
+  setNavOpen(false);
 };
 
 
@@ -116,7 +117,7 @@ const handleLogout = () => {
                 
                 <li className="nav-item">
                   <Link
-                    
+                    onClick={handleNavItemClick}
                     className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
                       "/admin"
                     )}`}
@@ -126,6 +127,7 @@ const handleLogout = () => {
                 </li>
                 <li className="nav-item">
                   <Link
+                    
                     onClick={handleLogout}
                     className={` pixelfont fs-2 nav-link nlink ${isActiveLink(
                       "/"
