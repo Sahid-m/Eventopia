@@ -1,4 +1,5 @@
 
+import { inject } from "@vercel/analytics";
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import './App.css';
@@ -14,7 +15,7 @@ import Signup from "./Pages/Signup";
 
 function App() {
   
-
+  inject();
 
       const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('authToken'));
 
