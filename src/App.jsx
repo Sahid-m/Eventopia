@@ -1,7 +1,7 @@
 
 import { inject } from "@vercel/analytics";
 import { useEffect, useState } from 'react';
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import './App.css';
 import Navbar from './Components/Navbar';
 import AboutUs from "./Pages/AboutUs";
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <Router > 
+      <Router> 
         <Navbar isLoggedIn={isLoggedIn}/>
         <Routes>
           <Route exact path="/" element={<HomePage handleLogin={handleLogin} />} />
