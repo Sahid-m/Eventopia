@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { useHref } from 'react-router-dom';
 import api_url from '../Components/url';
 
 export default function LoginPage(props) {
+
+    const href = useHref("/admin");
 
     LoginPage.propTypes = {
         handleLogin: PropTypes.func.isRequired,
@@ -41,6 +44,7 @@ export default function LoginPage(props) {
                     localStorage.setItem('authToken', data.token);
                     alert("You've Successfully Logged in and no need to login again for next 24h")
                     props.handleLogin();
+                    window.location.href = href;
                 }
             }
             

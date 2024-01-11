@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { useHref } from 'react-router-dom';
 import api_url from '../Components/url';
 
 
 export default function Signup(props) {
+
+  const href = useHref("/admin");
 
   Signup.propTypes = {
     handleLogin: PropTypes.func.isRequired, 
@@ -53,7 +56,7 @@ export default function Signup(props) {
               localStorage.setItem('authToken', data.token);
             alert("You're good to go! No need to login again for 24hours");
             props.handleLogin();
-            
+            window.location.href = href;
           }
       }
 

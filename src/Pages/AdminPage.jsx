@@ -27,7 +27,7 @@ export default function AdminPage() {
       })
 
       if (!response.ok) {
-        throw new Error("Fetching Error")
+        throw new Error("Fetching Error! Please Reload")
       }
 
       const data = await response.json();

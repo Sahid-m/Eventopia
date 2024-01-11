@@ -1,9 +1,11 @@
+import { useHref } from "react-router-dom";
 import AddEventForm from "./AddEventForm";
 import api_url from "./url";
 
 export default function AddPostsModal() {
 
   const formData = new FormData();
+  const href = useHref("/admin")
   
   const Submit = async (event) => {
     event.preventDefault();
@@ -32,7 +34,7 @@ export default function AddPostsModal() {
         alert(data.message);
 
         if (data.message === "Successfully Saved Event") {
-          window.location.reload();
+          window.location.href = href;
         }
       }
 

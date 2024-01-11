@@ -1,6 +1,7 @@
 import { AddToCalendarButton } from 'add-to-calendar-button-react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useHref } from 'react-router-dom';
 import '../App.css';
 import api_url from './url';
 
@@ -9,6 +10,7 @@ export default function EventCard(props) {
   const { img, heading, description, place , startDate , startTime  , endTime,user,_id } = props.eventobj;
   const [inEdit, setInEdit] = useState(false);
   const UpdatedEvent = new FormData();
+  const href = useHref("/admin");
   const [inputs, setInputs] = useState({
     heading: heading,
     description:  description,
@@ -43,7 +45,7 @@ export default function EventCard(props) {
         alert(data.message);
 
         if (data.message === "Updated The Event Successfully") {
-          window.location.reload();
+          window.location.href = href;
         }
       }
     } catch (error) {
@@ -83,7 +85,7 @@ export default function EventCard(props) {
           alert(data.message);
 
           if (data.message === "Event deleted successfully") {
-          window.location.reload();
+          window.location.href = href;
         }
         }  
       } catch (error) {
